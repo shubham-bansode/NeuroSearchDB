@@ -3,8 +3,6 @@
 A fully working **Vector Database** built from scratch in C++ with a web UI.  
 Implements **HNSW**, **KD-Tree**, and **Brute Force** search algorithms side-by-side, plus a **RAG pipeline** powered by a local LLM via Ollama.
 
-> Built as an educational project to show how production vector databases like Pinecone, Weaviate, and Chroma actually work under the hood.
-
 ---
 
 ## What This Project Does
@@ -48,7 +46,7 @@ Answer
 
 ## Prerequisites
 
-You need **3 things** installed on your Windows laptop:
+Install:
 
 1. **MSYS2** (gives you g++ compiler)
 2. **Git**
@@ -81,11 +79,10 @@ pacman -S mingw-w64-ucrt-x86_64-gcc
    - Under **System variables**, find **Path**, click **Edit**
    - Click **New** and add: `C:\msys64\ucrt64\bin`
    - Click OK on all windows
-   - **Open a new PowerShell** and verify:
+   - Open a new PowerShell and verify:
    ```
    g++ --version
    ```
-   You should see something like `g++ (GCC) 15.x.x`
 
 ---
 
@@ -128,8 +125,6 @@ ollama list
 
 You should see both models listed.
 
-> **Minimum specs for Ollama:** 8GB RAM recommended. The models will use ~3GB total.
-
 ---
 
 ### Step 4 — Clone the Repository
@@ -151,7 +146,7 @@ Inside the `NeuroSearchDB` folder, run:
 g++ -std=c++17 -O2 main.cpp -o db -lws2_32
 ```
 
-This produces `db.exe`. It takes about 10–20 seconds.
+This produces `db.exe`.
 
 > **Troubleshooting:**
 >
@@ -177,7 +172,7 @@ _(If Ollama is already in the system tray, skip this)_
 ./db
 ```
 
-You should see:
+Expected output:
 
 ```
 === NeuroSearchDB Engine ===
@@ -205,8 +200,6 @@ http://localhost:8080
 - Click **⚡ SEARCH** — results appear with distances, the matching point glows on the scatter plot
 - Click **▶ COMPARE ALL ALGOS** to run all 3 algorithms and compare their speed
 
-**The scatter plot** shows all 20 vectors projected to 2D using PCA. Notice how the 4 semantic categories (CS, Math, Food, Sports) form distinct clusters — this is what "semantic similarity" looks like visually.
-
 ### Tab 2: Documents (Real Embeddings)
 
 This uses Ollama to generate **real 768-dimensional embeddings** from any text.
@@ -223,7 +216,7 @@ This uses Ollama to generate **real 768-dimensional embeddings** from any text.
 2. Type a question about your documents
 3. Click **🤖 ASK AI**
 
-What happens behind the scenes:
+Behind the scenes:
 
 ```
 1. Your question → embedded with nomic-embed-text (768D vector)
@@ -231,8 +224,6 @@ What happens behind the scenes:
 3. Retrieved chunks → sent as context to llama3.2
 4. llama3.2 → generates an answer based only on your documents
 ```
-
-The answer streams in with a typewriter effect. Click the **context chips** to see exactly which chunks the AI used.
 
 ---
 
