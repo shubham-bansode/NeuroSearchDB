@@ -137,17 +137,15 @@ You should see both models listed.
 Open **PowerShell** and run:
 
 ```powershell
-git clone https://github.com/YOUR_USERNAME/VectorDB.git
-cd VectorDB
+git clone https://github.com/shubham-bansode/NeuroSearchDB.git
+cd NeuroSearchDB
 ```
-
-_(Replace `YOUR_USERNAME` with the actual GitHub username)_
 
 ---
 
 ### Step 5 — Compile the C++ Server
 
-Inside the `VectorDB` folder, run:
+Inside the `NeuroSearchDB` folder, run:
 
 ```powershell
 g++ -std=c++17 -O2 main.cpp -o db -lws2_32
@@ -173,7 +171,7 @@ ollama serve
 
 _(If Ollama is already in the system tray, skip this)_
 
-**Terminal 2** — Start the VectorDB server:
+**Terminal 2** — Start the NeuroSearchDB server:
 
 ```powershell
 ./db
@@ -182,7 +180,7 @@ _(If Ollama is already in the system tray, skip this)_
 You should see:
 
 ```
-=== VectorDB Engine ===
+=== NeuroSearchDB Engine ===
 http://localhost:8080
 20 demo vectors | 16 dims | HNSW+KD-Tree+BruteForce
 Ollama: ONLINE
@@ -297,7 +295,7 @@ BruteForce          O(N·d)      Exact, baseline
 KDTree              O(log N)    Exact, axis-aligned partitioning
 HNSW                O(log N)    Approximate, multilayer small-world graph
 
-VectorDB            Unified interface over all 3 (16D demo vectors)
+NeuroSearchDB        Unified interface over all 3 (16D demo vectors)
 DocumentDB          HNSW-only index for real Ollama embeddings (768D)
 OllamaClient        HTTP client → /api/embeddings + /api/generate
 ```
